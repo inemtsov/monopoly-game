@@ -1,0 +1,126 @@
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/stylesheets/chatStyle.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</head>
+
+<div class="container">
+    <h1>Welcome
+        <u>{{user.firstName}} {{user.lastName}}</u> to Lobby</h1>
+    <ul class="nav nav-tabs " role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#gamelist" role="tab">Game List</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#chatroom" role="tab">Chat Room</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+
+        <div class="tab-pane active" id="gamelist" role="tabpanel">
+            <div class="card">
+                <div class="card-header">
+                    <form method="post" action="/lobby">
+                        <h2 style="display: inline">Game List</h2>
+                        <button type="submit" class="btn btn-success btn-responsive pull-right"
+                                formaction="/lobby/create" name="create">New game
+                        </button>
+                    </form>
+                    <hr>
+                    <div class="row">
+                        <h3 class="col-md-4">Game Name:</h3>
+                        <h3 class="col-md-4">Players #:</h3>
+                    </div>
+                </div>
+            </div>
+
+            {{#each games}}
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-4 form">
+                                <h3>{{gameName}}</h3>
+                            </div>
+                            <div class="col-md-2 form">
+                                <h4>{{numberOfPlayers}}/{{numberOfMaxPlayers}}</h4>
+                            </div>
+                            <div class="col-md-6">
+                                <form method="post" action="/lobby">
+                                    <button type="submit" class="btn btn-primary pull-right"
+                                            formaction="/lobby/join"
+                                            name="joinButton" value="{{gameid}}">Join
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+
+        <div class="tab-pane" id="chatroom" role="tabpanel">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row">
+
+                        <div class="col-md-4">
+                            <div>
+                                <h3 style="display: inline">Online Users</h3>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div>
+                                <h3>Chat Panel</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="Content">
+                        <div class="card">
+                            <div class="list-group">
+
+                                <div id="chat-area">
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+
+                                            <div class="chat-container"
+                                                 style="overflow-y: scroll; height: 450px;">
+                                                <div class="users" style="padding-left: 1vw"></div>
+                                                <hr>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="chat-container">
+                                                <div class="messages" id="messages"></div>
+                                                <!--<div class="feedback"></div>-->
+                                            </div>
+                                            <div class="input-group">
+                                                <input class="form-control" id="#id_of_textbox" type="text"
+                                                       placeholder="Message...">
+                                                <span class="input-group-btn"><button class="btn btn-primary"
+                                                                                      type="button">Send</button></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.5.3/jquery.timeago.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascripts/bundle.js"></script>
+<script>
+
+</script>

@@ -1,0 +1,271 @@
+body {
+    padding: 50px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+    color: #00B7FF;
+}
+
+h1 {
+    text-align: center;
+    font-size: small;
+    width: 100%;
+}
+
+h2 {
+    font-size: 80%;
+    text-align: center;
+    width: 100%;
+}
+
+.propertiesRow {
+    height: 190px;
+}
+
+.propertyCell {
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+}
+
+.space {
+    border: 1px solid black;
+    margin-right: 1px;
+    margin-bottom: 1px;
+    height: 80px;
+    background-color: white;
+    word-break: break-all;
+}
+
+#diceResult {
+    font-size: 4em;
+}
+
+.diceResult {
+    border: 2px solid black;
+    height: 30px;
+    width: 30px;
+    margin-left: 4px;
+}
+
+.hallway {
+    word-break: normal;
+}
+
+.elementTitle {
+    background-color: rgb(21, 126, 251);
+    color: white;
+}
+
+.chat-container {
+    background-color: white;
+}
+
+.log-container {
+    background-color: white;
+    padding: 6px;
+}
+
+.log-container * {
+    margin-bottom: 2px;
+}
+
+.title {
+    text-align: center;
+}
+
+.price {
+    text-align: center;
+}
+
+.blankSpace {
+    margin-right: 8px;
+}
+
+.elementTitle {
+    border: 1px solid black;
+}
+
+.log {
+    border: 1px solid black;
+    width: 100%;
+    height: 500px;
+}
+
+.gamePot, .nbJailCard {
+    font-size: 2em;
+}
+
+.log-container {
+    overflow-y: scroll;
+    height: 475px;
+}
+
+.playerPiece {
+    background-color: yellow;
+}
+
+.chat-area {
+    border: 1px solid black;
+    width: 100%;
+    height: 100%;
+}
+
+.chat-container {
+    overflow-y: scroll;
+    height: 325px;
+}
+
+.propertyTable {
+    border: 1px solid black;
+    border-top: 10px solid;
+    height: 100%;
+}
+
+.red {
+    border-top: 10px solid red;
+}
+
+.yellow {
+    border-top: 10px solid yellow;
+}
+
+.orange {
+    border-top: 10px solid orange;
+}
+
+.green {
+    border-top: 10px solid green;
+}
+
+.lightBlue {
+    border-top: 10px solid lightblue;
+}
+
+.blue {
+    border-top: 10px solid blue;
+}
+
+.brown {
+    border-top: 10px solid brown;
+}
+
+.pink {
+    border-top: 10px solid pink;
+}
+
+.grey {
+    border-top: 10px solid grey;
+}
+
+.black {
+    border-top: 10px solid black;
+}
+
+#playerButtons button {
+    margin-right: 2px;
+}
+
+#propertiesModal {
+    text-align: center;
+}
+
+.yourTurn {
+    background-color: greenyellow;
+    font-size: 2em;
+}
+
+.youAreInJail {
+    background-color: red;
+    font-size: 2em;
+}
+
+.propertyCell {
+    border-bottom: 1px solid lightgrey;
+}
+
+.container-fluid {
+    width: auto !important;
+}
+
+.modal-header {
+    display: block;
+    width: 100%;
+}
+
+.rowProperty {
+    display: block;
+    padding-top: 2px;
+    text-align: center;
+}
+
+.rowHouse {
+    display: block;
+    padding-left: 100px;
+    text-align: left;
+}
+
+.rent {
+    display: inline;
+    padding-left: 70px;
+    text-align: right;
+    width: 100px;
+}
+
+#propertyModalLabel {
+    display: inline !important;
+}
+
+.but1 {
+    background-color: brown;
+    color: white;
+}
+
+.but2 {
+    background-color: lightblue;
+    color: black;
+}
+
+.but3 {
+    background-color: pink;
+    color: black;
+}
+
+.but4 {
+    background-color: orange;
+    color: black;
+}
+
+.but5 {
+    background-color: red;
+    color: black;
+}
+
+.but6 {
+    background-color: yellow;
+    color: black;
+}
+
+.but7 {
+    background-color: green;
+    color: white;
+}
+
+.but8 {
+    background-color: blue;
+    color: white;
+}
+
+.but9 {
+    background-color: grey;
+    color: white;
+}
+
+.but10 {
+    background-color: black;
+    color: white;
+}
+
+#propertyModal {
+    text-align: center;
+}

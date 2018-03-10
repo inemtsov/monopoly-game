@@ -1,0 +1,513 @@
+<head>
+    <link rel="stylesheet" type="text/css" href='/stylesheets/game.css'>
+    <link rel="stylesheet" href="/stylesheets/chatStyleGame.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+{{#if errors}}
+    {{#each errors}}
+        <div class="alert alert-danger">{{msg}}</div>
+    {{/each}}
+{{/if}}
+
+{{#each properties}}
+    <input type="hidden" id="properties{{@index}}" value="{{this.name}},{{this.cost_to_buy}}
+                                                    ,{{this.rent_m}},{{this.rent_0}},{{this.rent_1}},{{this.rent_2}}
+                                                    ,{{this.rent_3}},{{this.rent_4}},{{this.rent_h}},{{this.house_cost}}
+                                                    ,{{this.property}}"/>
+{{/each}}
+
+
+<input type="hidden" id="game-id" value="{{gameId}}"/>
+<input type="hidden" id="user-id" value="{{userid}}"/>
+<input type="hidden" id="property-id" value=""/>
+
+<div class="container">
+    <div class="row col-12">
+        <div class="col-8">
+            <div class="row">
+                <div class="col space" id="20">
+                    <div class="row title"><h1>Free Park</h1></div>
+                    <div class="row price"><h2></h2></div>
+                    <div class="hallway text-center"></div>
+                </div>
+                <div class="col space red" id="21">
+                    <div class="row title"><h1>Kentucky Ave</h1></div>
+                    <div class="row price"><h2>$220</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space" id="22">
+                    <div class="row title"><h1>Chance</h1></div>
+                    <div class="row price"><h2></h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space red" id="23">
+                    <div class="row title"><h1>Indiana Ave</h1></div>
+                    <div class="row price"><h2>$220</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space red" id="24">
+                    <div class="row title"><h1>Illinois Ave</h1></div>
+                    <div class="row price"><h2>$240</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space" id="25">
+                    <div class="row title"><h1>B&O Railroad</h1></div>
+                    <div class="row price"><h2>$200</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space yellow" id="26">
+                    <div class="row title"><h1>Atlantic Ave</h1></div>
+                    <div class="row price"><h2>$260</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space yellow" id="27">
+                    <div class="row title"><h1>Ventnor Ave</h1></div>
+                    <div class="row price"><h2>$260</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space" id="28">
+                    <div class="row title"><h1>Water works</h1></div>
+                    <div class="row price"><h2>$150</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space yellow" id="29">
+                    <div class="row title"><h1>Marvin gardens</h1></div>
+                    <div class="row price"><h2>$280</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space" id="30">
+                    <div class="row title"><h1>Go To Jail</h1></div>
+                    <div class="row price"><h2></h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col space orange" id="19">
+                    <div class="row title"><h1>New York</h1></div>
+                    <div class="row price"><h2>$200</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col-9 blankSpace text-center">
+                    <button id="exitButton" type="submit"
+                            class="btn btn-danger btn-sm" style="margin-top: 15px">Leave the game
+                    </button>
+                </div>
+
+                <div class="col space green" id="31">
+                    <div class="row title"><h1>Pacific Ave</h1></div>
+                    <div class="row price"><h2>$300</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col space orange" id="18">
+                    <div class="row title"><h1>Tennessee Ave</h1></div>
+                    <div class="row price"><h2>$180</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <!--Rolling button-->
+                <div class="col-9 blankSpace text-center">
+                    <button id="rollDice" type="submit"
+                            class="btn btn-primary" disabled>Roll
+                    </button>
+                    <button id="buildModalButton" type="submit"
+                            class="btn btn-primary" disabled>Build
+                    </button>
+                    <button id="finishTurn" type="submit"
+                            class="btn btn-primary" disabled>Finish
+                    </button>
+                </div>
+
+                <div class="col space green" id="32">
+                    <div class="row title"><h1>North Carolina Ave</h1></div>
+                    <div class="row price"><h2>$300</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col space" id="17">
+                    <div class="row title"><h1>Community Chest</h1></div>
+                    <div class="row price"><h2></h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col-9 blankSpace">
+                    <div class="col yourTurn text-center" type="hidden">It's your turn !</div>
+                </div>
+
+                <div class="col space" id="33">
+                    <div class="row title"><h1>Community Chest</h1></div>
+                    <div class="row price"><h2></h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col space orange" id="16">
+                    <div class="row title"><h1>St. James Place</h1></div>
+                    <div class="row price"><h2>$180</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+
+                <div class="col-9 blankSpace" id="38">
+                    <div class="col youAreInJail text-center" type="hidden">You are in jail !</div>
+                </div>
+
+                <div class="col space green" id="34">
+                    <div class="row title"><h1>Pennsylvania Ave</h1></div>
+                    <div class="row price"><h2>$320</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col space" id="15">
+                    <div class="row title"><h1>Pennsylvania Railroad</h1></div>
+                    <div class="row price"><h2>$200</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col-9 blankSpace text-center" id="diceResult">
+
+                </div>
+
+                <div class="col space" id="35">
+                    <div class="row title"><h1>Short Line</h1></div>
+                    <div class="row price"><h2>$200</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col space pink" id="14">
+                    <div class="row title"><h1>Virginia Ave</h1></div>
+                    <div class="row price"><h2>$160</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col-9 blankSpace text-center">
+                    <div class="col nbJailCard"></div>
+                </div>
+
+                <div class="col space" id="36">
+                    <div class="row title"><h1>Chance</h1></div>
+                    <div class="row price"><h2></h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col space pink" id="13">
+                    <div class="row title"><h1>State Ave</h1></div>
+                    <div class="row price"><h2>$140</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col-9 blankSpace text-center">
+                    <div class="col gamePot"></div>
+                </div>
+
+                <div class="col space blue" id="37">
+                    <div class="row title"><h1>Park Place</h1></div>
+                    <div class="row price"><h2>$350</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col space" id="12">
+                    <div class="row title"><h1>Electric Compagny</h1></div>
+                    <div class="row price"><h2>$150</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col-9 blankSpace text-center" id="playerButtons">
+
+                </div>
+                <div class="col space" id="38">
+                    <div class="row title"><h1>Luxury Tax</h1></div>
+                    <div class="row price"><h2>$75</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col space pink" id="11">
+                    <div class="row title"><h1>St. Charles Place</h1></div>
+                    <div class="row price"><h2>$140</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col-9 blankSpace">
+
+
+                </div>
+
+                <div class="col space blue" id="39">
+                    <div class="row title"><h1>Boardwalk</h1></div>
+                    <div class="row price"><h2>$400</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col space " id="10">
+                    <div class="row title"><h1>Jail</h1></div>
+                    <div class="row price"><h2></h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space lightBlue" id="9">
+                    <div class="row title"><h1>Connecticut Ave</h1></div>
+                    <div class="row price"><h2>$120</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space lightBlue" id="8">
+                    <div class="row title"><h1>Vermont Ave</h1></div>
+                    <div class="row price"><h2>$100</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space" id="7">
+                    <div class="row title"><h1>Chance</h1></div>
+                    <div class="row price"><h2></h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space lightBlue" id="6">
+                    <div class="row title"><h1>Oriental Ave</h1></div>
+                    <div class="row price"><h2>$100</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space" id="5">
+                    <div class="row title"><h1>Reading Railroad</h1></div>
+                    <div class="row price"><h2>$200</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space" id="4">
+                    <div class="row title"><h1>Income Tax</h1></div>
+                    <div class="row price"><h2>10% or $200</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+                <div class="col space brown" id="3">
+                    <div class="row title"><h1>Baltic Avec</h1></div>
+                    <div class="row price"><h2>$60</h2></div>
+                    <div class="hallway text-center"></div>
+                </div>
+                <div class="col space" id="2">
+                    <div class="row title"><h1>Community Chest</h1></div>
+                    <div class="row price"><h2></h2></div>
+                    <div class="hallway text-center"></div>
+                </div>
+                <div class="col space brown" id="1">
+                    <div class="row title"><h1>Mediterranean</h1></div>
+                    <div class="row price"><h2>$60</h2></div>
+                    <div class="hallway text-center"></div>
+                </div>
+                <div class="col space" id="0">
+                    <div class="row title"><h1>GO</h1></div>
+                    <div class="row price"><h2>Collect $200</h2></div>
+                    <div class="hallway text-center"></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="log">
+                <div class="elementTitle"><h1><b>Game Logs</b></h1></div>
+                <div class="log-container">
+                </div>
+            </div>
+            <div id="chat-area" class="Content">
+                <div class="elementTitle"><h1><b>Chat</b></h1></div>
+                <div class="chat-container">
+                    <div class="messages"></div>
+                </div>
+                <div class="input-group">
+                    <input class="form-control" id="id_of_textbox" type="text" placeholder="Message...">
+                    <span class="input-group-btn"><button class="btn btn-primary"
+                                                          type="button">Send</button></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="propertiesModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Properties owned by</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                        <div class="row propertiesRow">
+                            <div class="col propertyTable red group5" id="red"></div>
+                            <div class="col propertyTable yellow group6" id="yellow"></div>
+                            <div class="col propertyTable green group7" id="green"></div>
+                            <div class="col propertyTable blue group8" id="blue"></div>
+                            <div class="col propertyTable brown group1" id="brown group1"></div>
+                        </div>
+                        <div class="row propertiesRow">
+                            <div class="col propertyTable lightBlue group2" id="lightBlue"></div>
+                            <div class="col propertyTable pink group3" id="pink"></div>
+                            <div class="col propertyTable orange group4" id="orange"></div>
+                            <div class="col propertyTable grey group9" id="grey"></div>
+                            <div class="col propertyTable black group10" id="black"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="propertyModal" tabindex="-1" role="dialog" aria-labelledby="propertyModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="propertyModalLabel">Properties owned by</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="buyModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!--<div class="modal-body">
+                    <p>Modal body text goes here.</p>
+                </div>-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Not now</button>
+                    <button type="button" id="buyButton" class="btn btn-primary">Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="jailModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your in jail ! What do you want to do ?</h5>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Stay in jail</button>
+                    <button type="button" id="payButton" class="btn btn-primary">Pay $50</button>
+                    <button type="button" id="cardButton" class="btn btn-primary">Use my card</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="gameOverModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">GAME OVER !</h5>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-secondary" href="/lobby">Lobby</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="buildModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Build</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-7">
+                            <div class="btn-group-vertical" id="propertiesBuildableList" data-toggle="buttons">
+                                <!-- <label class="btn btn-secondary active">
+                                     <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1
+                                     (preselected)
+                                 </label>-->
+
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="btn-group-vertical" id="houseNumberGroup" data-toggle="buttons">
+                                <!--<label class="btn btn-primary active">
+                                    <input type="radio" name="options" id="+1" autocomplete="off" checked>+1 house
+                                </label>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="button" id="buildActionButton" class="btn btn-primary" data-dismiss="modal" disabled>
+                        Build !
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timeago/1.5.3/jquery.timeago.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<!-- <script src="/javascripts/bundle.js"></script> -->
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<script src="/javascripts/gameBundle.js"></script>

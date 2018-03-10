@@ -1,0 +1,104 @@
+{{#if errors}}
+    {{#each errors}}
+        <div class="alert alert-danger" xmlns="http://www.w3.org/1999/html">{{msg}}</div>
+    {{/each}}
+{{/if}}
+
+<script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+<div class="container">
+    <h1>Edit Profile</h1>
+    <hr class="colorgraph">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="text-center">
+
+                {{#if user}}
+                    <img src="{{user.avatar}}" class="img-fluid img-thumbnail" style="width: 200px; height: 200px;"
+                         alt="avatar">
+                {{else}}
+                    <img src="//placehold.it/100" class="img-fluid img-thumbnail" alt="avatar">
+                {{/if}}
+
+                <form action="/profile" method="POST" enctype="multipart/form-data">
+                    {{#if msg }}
+                        {{msg}}
+                    {{/if}}
+                    <div class="file-field input-field">
+                        <div class="btn grey">
+                            <span>File</span>
+                            <input name="avatar" type="file">
+                        </div>
+                        <button type="submit" class="btn" formaction="/profile/upload">Submit</button>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-md-9 personal-info">
+            <h2>Personal info</h2>
+            <form method="post" class="form-horizontal" role="form" action="/profile">
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">First name:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" value="" name="first_name"
+                               placeholder="{{user.firstName}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Last name:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" value="" name="last_name"
+                               placeholder="{{user.lastName}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-3 control-label">Email:</label>
+                    <div class="col-lg-8">
+                        <input class="form-control" type="text" value="" name="email" placeholder="{{user.email}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Username</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="text" value="" name="username"
+                               placeholder="{{user.username}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">New Password:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="password" value="" name="newPassword">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-md-3 control-label">Confirm new password:</label>
+                    <div class="col-md-8">
+                        <input class="form-control" type="password" value="" name="newPassword2">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-3 control-label"></label>
+                    <div class="col-md-8">
+                        <button type="submit" class="btn btn-block btn-primary" formaction="/profile/save"> Save
+                            Changes
+                        </button>
+                        <button type="submit" class="btn btn-block btn-success" formaction="/profile/lobby">Back to
+                            Lobby
+                        </button>
+                        <button type="submit" class="btn btn-block btn-danger" formaction="/profile/delete">Delete
+                            account
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr class="colorgraph">
+</div>
